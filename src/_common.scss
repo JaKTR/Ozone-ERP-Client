@@ -1,0 +1,22 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+@use "styles" as global;
+
+$color-config: mat.get-color-config(global.$RACS-theme);
+$typo-config: mat.get-typography-config(global.$RACS-theme);
+
+$primary-palette: map.get($color-config, 'primary');
+$accent-palette: map.get($color-config, 'accent');
+$warn-palette: map.get($color-config, 'warn');
+
+@mixin backgroundColorPrimary($hue) {
+  background-color: mat.get-color-from-palette($primary-palette, $hue);
+}
+
+@mixin displayFlex($direction, $justifyContent, $alignItems) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+
+}

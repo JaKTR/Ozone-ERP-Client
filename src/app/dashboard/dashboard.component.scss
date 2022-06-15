@@ -1,0 +1,49 @@
+@use 'src/_common.scss' as common;
+
+mat-toolbar {
+  max-height: 6vh;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: bold;
+  padding: 0.5rem 0.8rem;
+  #toolbar-left {
+    @include common.displayFlex(row, flex-start, center);
+  }
+  #toolbar-right {
+    margin-left: auto;
+    height: 100%;
+    padding: .2rem;
+    mat-icon {
+      font-size: 18px;
+    }
+  }
+}
+
+mat-sidenav-container {
+  height: 94vh;
+  nav {
+    height: 100%;
+    max-height: 94vh;
+    @include common.displayFlex(column, flex-start, flex-start);
+    button {
+      width: 100%;
+      padding: 0.2rem 0.5rem;
+      color: black;
+      div {
+        @include common.displayFlex(row, flex-start, center);
+        mat-icon {
+          font-size: 18px;
+          @include common.displayFlex(row, flex-start, center);
+        }
+        span {
+          font-size: .9rem;
+          line-height: 0;
+        }
+      }
+      &:last-child {
+        position: absolute;
+        bottom: 1rem;
+      }
+    }
+  }
+}
