@@ -9,8 +9,33 @@ $primary-palette: map.get($color-config, 'primary');
 $accent-palette: map.get($color-config, 'accent');
 $warn-palette: map.get($color-config, 'warn');
 
+@mixin colorPrimary($hue) {
+  color: mat.get-color-from-palette($primary-palette, $hue);
+}
+
 @mixin backgroundColorPrimary($hue) {
   background-color: mat.get-color-from-palette($primary-palette, $hue);
+}
+
+@mixin colorAccent($hue) {
+  color: mat.get-color-from-palette($accent-palette, $hue);
+}
+
+@mixin backgroundColorAccent($hue) {
+  background-color: mat.get-color-from-palette($accent-palette, $hue);
+}
+
+@mixin colorWarn($hue) {
+  color: mat.get-color-from-palette($warn-palette, $hue);
+}
+
+/**
+ * Applies the specified color to the background color of the component.
+  * @param $hue The hue of the color to apply.
+  * @param $transparency The transparency level to apply.
+ */
+@mixin backgroundColorWarn($hue, $transparency) {
+  background: transparentize(mat.get-color-from-palette($warn-palette, $hue), $transparency);
 }
 
 @mixin displayFlex($direction, $justifyContent, $alignItems) {
