@@ -1,34 +1,29 @@
 import {AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {MatSidenav} from "@angular/material/sidenav";
-import {MatMenuTrigger} from "@angular/material/menu";
+import {NavConfig, NavItem} from "./interfaces";
+import {mainNavItems} from "./mainNav.struct";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements AfterViewInit {
-  @ViewChild(MatSidenav) sidenav!: MatSidenav;
-  @ViewChildren(MatMenuTrigger, {read: ElementRef}) triggers!: QueryList<ElementRef>;
+export class AppComponent {
+  @ViewChild('drawerToggleBtn', {read: ElementRef})
+  private readonly _drawerToggleBtn!: ElementRef;
 
-  private readonly _dropMenuData = {} as any;
-
-  constructor() {}
-
-  ngAfterViewInit() {
-    this._populateDropMenuData();
+  private readonly _navConfig: NavConfig = {
+    linkClickFn: () => {
+      this._drawerToggleBtn.nativeElement.click();
+      this._drawerToggleBtn.nativeElement.blur();
+    },
+    navItems: mainNavItems,
   }
 
-  private _populateDropMenuData() {
-    this.triggers.forEach(trigger => {
-      this._dropMenuData[trigger.nativeElement.id] = {
-        triggerWidth: trigger.nativeElement.clientWidth,
-      };
-    });
+  constructor() {
   }
 
-  public menuData(triggerID: string) {
-    let data = this._dropMenuData[triggerID];
-    return data ? data : {triggerWidth: 0};
+
+  get navConfig(): NavConfig {
+    return this._navConfig;
   }
 }

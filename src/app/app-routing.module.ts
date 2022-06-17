@@ -6,6 +6,8 @@ import {ProfileComponent} from "./profile/profile.component";
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: LoginComponent },
+  { path: 'rosters/:truck', component: ProfileComponent },
+  { path: 'checks', component: LoginComponent },
   { path: 'contacts', component: ProfileComponent },
   { path: 'profile', component: ProfileComponent },
   { path: 'notices', component: ProfileComponent },

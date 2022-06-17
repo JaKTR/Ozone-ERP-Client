@@ -1,90 +1,19 @@
 <mat-toolbar color="primary">
   <div id="toolbar-left">
-    <button class="flexItem" mat-icon-button (click)="sidenav.toggle()">
+    <button #drawerToggleBtn (click)="sidenav.toggle()" class="flexItem" mat-icon-button>
       <mat-icon *ngIf="!sidenav.opened">menu</mat-icon>
       <mat-icon *ngIf="sidenav.opened">close</mat-icon>
     </button>
     RACS
   </div>
-  <div id="toolbar-right" class="px-4 d-flex">
-    <mat-icon id="notification" matBadge="15" matBadgeSize="small" matBadgeColor="warn">notifications</mat-icon>
+  <div class="px-4 d-flex" id="toolbar-right">
+    <mat-icon id="notification" matBadge="15" matBadgeColor="warn" matBadgeSize="small">notifications</mat-icon>
   </div>
 </mat-toolbar>
 
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav" mode="over">
-    <nav>
-      <a routerLink="/home" routerLinkActive="nav-btn-active" class="nav-btn">
-        <button mat-button>Home</button>
-      </a>
-      <a class="nav-btn">
-        <button id='rosterTrigger' class="nav-expandable" mat-button [matMenuTriggerFor]="rosterMenu"
-                [matMenuTriggerData]="menuData('rosterTrigger')">Rosters
-        </button>
-        <mat-menu #rosterMenu="matMenu" yPosition="below">
-          <ng-template matMenuContent let-menuWidth="triggerWidth">
-            <div [style.width.px]="menuWidth">
-              <button mat-menu-item>Roster 1</button>
-              <button mat-menu-item>Roster 2</button>
-            </div>
-          </ng-template>
-        </mat-menu>
-      </a>
-      <a class="nav-btn">
-        <button id='checkTrigger' mat-button class="nav-expandable" [matMenuTriggerFor]="checksMenu"
-                [matMenuTriggerData]="menuData('checkTrigger')">Appliance checks
-        </button>
-        <mat-menu #checksMenu="matMenu" yPosition="below">
-          <ng-template matMenuContent let-menuWidth="triggerWidth">
-            <div [style.min-width.px]="menuWidth">
-              <button mat-menu-item>Checks Report</button>
-              <button mat-menu-item>Checks Report (PDF)</button>
-            </div>
-          </ng-template>
-        </mat-menu>
-      </a>
-      <a routerLink="/contacts" routerLinkActive="nav-btn-active" class="nav-btn">
-        <button mat-button>Contacts</button>
-      </a>
-      <a routerLink="/profile" routerLinkActive="nav-btn-active" class="nav-btn">
-        <button mat-button>Profile</button>
-      </a>
-      <a class="nav-btn">
-        <button id='statsTrigger' mat-button class="nav-expandable" [matMenuTriggerFor]="statsMenu"
-                [matMenuTriggerData]="menuData('checkTrigger')">Stats
-        </button>
-        <mat-menu #statsMenu="matMenu" yPosition="below">
-          <ng-template matMenuContent let-menuWidth="triggerWidth">
-            <div [style.min-width.px]="menuWidth">
-              <a mat-menu-item>
-                <button mat-button>Personal</button>
-              </a>
-              <a mat-menu-item>
-                <button mat-button>Brigade (Averages)</button>
-              </a>
-              <a mat-menu-item>
-                <button mat-button>Brigade (Differences)</button>
-              </a>
-            </div>
-          </ng-template>
-        </mat-menu>
-      </a>
-      <a routerLink="notices" routerLinkActive="nav-btn-active" class="nav-btn">
-        <button mat-button>Notices</button>
-      </a>
-      <a routerLink="trailer" routerLinkActive="nav-btn-active" class="nav-btn">
-        <button mat-button>Trailer</button>
-      </a>
-      <a routerLink="help" routerLinkActive="nav-btn-active" class="nav-btn">
-        <button mat-button>Help</button>
-      </a>
-      <a routerLink="issues" routerLinkActive="nav-btn-active" class="nav-btn">
-        <button mat-button>Known issues</button>
-      </a>
-      <a class="nav-btn">
-        <button mat-button>Logout</button>
-      </a>
-    </nav>
+    <app-mat-nav [navConfig]="navConfig"></app-mat-nav>
   </mat-sidenav>
 
   <mat-sidenav-content>
