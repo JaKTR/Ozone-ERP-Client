@@ -1,5 +1,5 @@
-import {AfterViewInit, Component, ElementRef, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {NavConfig, NavItem} from "./interfaces";
+import {Component, ElementRef, ViewChild} from '@angular/core';
+import {NavConfig} from "./interfaces";
 import {mainNavItems} from "./mainNav.struct";
 
 @Component({

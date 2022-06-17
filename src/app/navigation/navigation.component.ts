@@ -3,11 +3,11 @@ import {NavConfig} from "../interfaces";
 import {MatMenuTrigger} from "@angular/material/menu";
 
 @Component({
-  selector: 'app-mat-nav',
-  templateUrl: './mat-nav.component.html',
-  styleUrls: ['./mat-nav.component.scss']
+  selector: 'app-navigation',
+  templateUrl: './navigation.component.html',
+  styleUrls: ['./navigation.component.scss']
 })
-export class MatNavComponent implements AfterViewInit {
+export class NavigationComponent implements AfterViewInit {
   @ViewChildren('navLink', {read: ElementRef})
   private readonly _mainNavLinks!: QueryList<ElementRef>;
   @ViewChildren(MatMenuTrigger, {read: ElementRef})

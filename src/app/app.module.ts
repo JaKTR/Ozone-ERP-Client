@@ -16,14 +16,14 @@ import {MatInputModule} from "@angular/material/input";
 import {MatMenuModule} from "@angular/material/menu";
 import {AppRoutingModule} from "./app-routing.module";
 import { ProfileComponent } from './profile/profile.component';
-import { MatNavComponent } from './mat-nav/mat-nav.component';
+import { NavigationComponent } from './navigation/navigation.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     ProfileComponent,
-    MatNavComponent,
+    NavigationComponent,
   ],
     imports: [
         BrowserModule,

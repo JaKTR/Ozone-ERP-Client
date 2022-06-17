@@ -1,8 +1,8 @@
 export interface NavItem {
   id: string;
   label: string;
-  routerLink: string;
-  linkActiveClass: string;
+  routerLink?: string;
+  linkActiveClass?: string;
   subItems?: NavItem[];
 }
 

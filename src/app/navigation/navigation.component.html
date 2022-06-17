@@ -1,6 +1,6 @@
 <nav>
-  <a *ngFor="let navItem of navConfig.navItems" class="nav-btn" routerLink='{{navItem.routerLink}}'
-     routerLinkActive="{{navItem.linkActiveClass}}">
+  <a *ngFor="let navItem of navConfig.navItems" class="nav-btn" [routerLink]="navItem.routerLink ? navItem.routerLink : null"
+     [routerLinkActive]="navItem.linkActiveClass ? navItem.linkActiveClass : ''">
     <button #navLink *ngIf="navItem.subItems === undefined || navItem.subItems.length < 1; else subMenu"
             mat-button>{{navItem.label}}</button>
     <ng-template #subMenu>
@@ -11,8 +11,8 @@
                 yPosition="below">
         <ng-template let-menuWidth="triggerWidth" matMenuContent>
           <div [style.width.px]="menuWidth">
-            <a *ngFor="let subItem of navItem.subItems" class="nav-btn" routerLink="{{subItem.routerLink}}"
-               routerLinkActive="{{subItem.linkActiveClass}}">
+            <a *ngFor="let subItem of navItem.subItems" class="nav-btn" [routerLink]="subItem.routerLink ? subItem.routerLink : null"
+               [routerLinkActive]="subItem.linkActiveClass ? subItem.linkActiveClass : ''">
               <button #navLink mat-button>{{subItem.label}}</button>
             </a>
           </div>

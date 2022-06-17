@@ -10,7 +10,6 @@ let navItems: NavItem[] = [
   {
     id: 'rosters',
     label: 'Rosters',
-    routerLink: '/',
     linkActiveClass: 'nav-btn-active',
     subItems: [
       {
