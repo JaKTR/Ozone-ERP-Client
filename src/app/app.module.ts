@@ -37,7 +37,8 @@ import { NavigationComponent } from './navigation/navigation.component';
         MatBadgeModule,
         MatFormFieldModule,
         MatInputModule,
-        MatMenuModule
+        MatMenuModule,
+        AppRoutingModule
     ],
   providers: [],
   bootstrap: [AppComponent]
