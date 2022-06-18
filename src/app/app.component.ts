@@ -8,6 +8,8 @@ import {mainNavItems} from "./mainNav.struct";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  title = 'RACS';
+
   @ViewChild('drawerToggleBtn', {read: ElementRef})
   private readonly _drawerToggleBtn!: ElementRef;
 
