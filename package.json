@@ -1,5 +1,5 @@
 {
-  "name": "racs",
+  "name": "umbrella-client",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
