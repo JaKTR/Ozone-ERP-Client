@@ -4,13 +4,15 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build --configuration production",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "lint": "ng lint"
+    "lint": "ng lint",
+    "heroku-postbuild": "ng build"
   },
   "private": true,
   "dependencies": {
+    "@angular-devkit/build-angular": "^14.0.2",
     "@angular/cli": "^14.0.2",
     "@angular/compiler-cli": "^14.0.2",
     "@angular/animations": "^14.0.2",
@@ -32,7 +34,6 @@
     "zone.js": "~0.11.4"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "^14.0.2",
     "@angular-eslint/builder": "13.5.0",
     "@angular-eslint/eslint-plugin": "13.5.0",
     "@angular-eslint/eslint-plugin-template": "13.5.0",
