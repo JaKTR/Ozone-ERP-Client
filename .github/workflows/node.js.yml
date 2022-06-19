@@ -31,27 +31,20 @@ jobs:
     - run: npm test -- --watch=false --browsers=ChromeHeadless
     
   coverage:
-      needs: [ test ]
-      name: coverage
-      runs-on: ubuntu-latest
-      
-      strategy:
-        matrix:
-          node-version: [16.x]
-      
-      steps:
-      - uses: actions/checkout@v3
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v3
-        with:
-          node-version: ${{ matrix.node-version }}
-          cache: 'npm'
-          
-      - run: npm install -g yarn
-      - run: yarn install
-      - run: yarn build
-      - uses: paambaati/codeclimate-action@v2.2.4
-        env:
-          CC_TEST_REPORTER_ID: 7c62441f6b599f0e4b835ca1a9842bdf8094d1cc61046387f8b6f9f8b2081580
-        with:
-          coverageCommand: yarn coverage
+    needs: [ test ]
+    name: coverage
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - uses: actions/setup-node@master
+      with:
+        node-version: '12'
+    - run: npm install -g yarn
+    - run: yarn install
+    - run: yarn build
+    - uses: paambaati/codeclimate-action@v3.0.0
+      env:
+        CC_TEST_REPORTER_ID: ${{ secrets.CC_TEST_REPORTER_ID }}
+      with:
+        coverageCommand: yarn run coverage
+        debug: true
