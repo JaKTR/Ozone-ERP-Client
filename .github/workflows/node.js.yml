@@ -28,22 +28,5 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test -- --watch=false --browsers=ChromeHeadless
-    
-  coverage:
-    needs: [ test ]
-    name: coverage
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@master
-    - uses: actions/setup-node@master
-      with:
-        node-version: '16'
-    - run: npm install
-    - run: npm run build
-    - uses: paambaati/codeclimate-action@v3.0.0
-      env:
-        CC_TEST_REPORTER_ID: 7c62441f6b599f0e4b835ca1a9842bdf8094d1cc61046387f8b6f9f8b2081580
-      with:
-        coverageCommand: npm run test -- --code-coverage
-        debug: true
+    - run: npm test -- --watch=false --browsers=ChromeHeadless --code-coverage=true
+    - run: npm run make-badges

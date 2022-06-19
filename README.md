@@ -1,6 +1,9 @@
 ![example workflow](https://github.com/JaKTR/Umbrella-ERP-Client/actions/workflows/azure-static-web-apps-icy-pebble-0e8886110.yml/badge.svg)
 [![Maintainability](https://api.codeclimate.com/v1/badges/314e0052a3257149b26e/maintainability)](https://codeclimate.com/github/JaKTR/Umbrella-ERP-Client/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/314e0052a3257149b26e/test_coverage)](https://codeclimate.com/github/JaKTR/Umbrella-ERP-Client/test_coverage)
+
+| Statements                  | Branches                | Functions                 | Lines             |
+| --------------------------- | ----------------------- | ------------------------- | ----------------- |
+| ![Statements](https://img.shields.io/badge/statements-60%25-red.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-0%25-red.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-42.85%25-red.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-50%25-red.svg?style=flat) |
 
 # RACS
 
