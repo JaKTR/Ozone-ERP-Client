@@ -1,3 +1,4 @@
+![example workflow](https://github.com/JaKTR/Umbrella-ERP-Client/actions/workflows/azure-static-web-apps-icy-pebble-0e8886110.yml/badge.svg)
 # RACS
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
