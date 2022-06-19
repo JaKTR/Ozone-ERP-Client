@@ -1,4 +1,7 @@
 ![example workflow](https://github.com/JaKTR/Umbrella-ERP-Client/actions/workflows/azure-static-web-apps-icy-pebble-0e8886110.yml/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/314e0052a3257149b26e/maintainability)](https://codeclimate.com/github/JaKTR/Umbrella-ERP-Client/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/314e0052a3257149b26e/test_coverage)](https://codeclimate.com/github/JaKTR/Umbrella-ERP-Client/test_coverage)
+
 # RACS
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.0.1.
