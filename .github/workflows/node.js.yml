@@ -40,10 +40,10 @@ jobs:
       with:
         node-version: '16'
     - run: npm install
-    - run: npm build
+    - run: npm run build
     - uses: paambaati/codeclimate-action@v3.0.0
       env:
         CC_TEST_REPORTER_ID: 7c62441f6b599f0e4b835ca1a9842bdf8094d1cc61046387f8b6f9f8b2081580
       with:
-        coverageCommand: npm test -- --code-coverage
+        coverageCommand: npm run test -- --code-coverage
         debug: true
