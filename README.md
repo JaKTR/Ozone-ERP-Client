@@ -3,7 +3,7 @@
 
 | Statements                  | Branches                | Functions                 | Lines             |
 | --------------------------- | ----------------------- | ------------------------- | ----------------- |
-| ![Statements](https://img.shields.io/badge/statements-60%25-red.svg?style=flat) | ![Branches](https://img.shields.io/badge/branches-0%25-red.svg?style=flat) | ![Functions](https://img.shields.io/badge/functions-42.85%25-red.svg?style=flat) | ![Lines](https://img.shields.io/badge/lines-50%25-red.svg?style=flat) |
+| ![Statements](https://img.shields.io/badge/statements-60%25-red.svg?style=for-the-badge&logo=jasmine) | ![Branches](https://img.shields.io/badge/branches-0%25-red.svg?style=for-the-badge&logo=jasmine) | ![Functions](https://img.shields.io/badge/functions-42.85%25-red.svg?style=for-the-badge&logo=jasmine) | ![Lines](https://img.shields.io/badge/lines-50%25-red.svg?style=for-the-badge&logo=jasmine) |
 
 # RACS
 
