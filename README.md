@@ -2,6 +2,7 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/314e0052a3257149b26e/maintainability)](https://codeclimate.com/github/JaKTR/Umbrella-ERP-Client/maintainability)
 [![Language grade: JavaScript](https://img.shields.io/lgtm/grade/javascript/g/JaKTR/Umbrella-ERP-Client.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/JaKTR/Umbrella-ERP-Client/context:javascript)
 [![Total alerts](https://img.shields.io/lgtm/alerts/g/JaKTR/Umbrella-ERP-Client.svg?logo=lgtm&logoWidth=18)](https://lgtm.com/projects/g/JaKTR/Umbrella-ERP-Client/alerts/)
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)
 
 | Statements                  | Branches                | Functions                 | Lines             |
 | --------------------------- | ----------------------- | ------------------------- | ----------------- |
