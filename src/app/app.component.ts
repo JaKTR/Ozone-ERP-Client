@@ -1,6 +1,4 @@
-import {Component, ElementRef, ViewChild} from '@angular/core';
-import {NavConfig} from "./interfaces";
-import {mainNavItems} from "./mainNav.struct";
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,24 +6,4 @@ import {mainNavItems} from "./mainNav.struct";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'RACS';
-
-  @ViewChild('drawerToggleBtn', {read: ElementRef})
-  private readonly _drawerToggleBtn!: ElementRef;
-
-  private readonly _navConfig: NavConfig = {
-    linkClickFn: () => {
-      this._drawerToggleBtn.nativeElement.click();
-      this._drawerToggleBtn.nativeElement.blur();
-    },
-    navItems: mainNavItems,
-  }
-
-  constructor() {
-  }
-
-
-  get navConfig(): NavConfig {
-    return this._navConfig;
-  }
 }

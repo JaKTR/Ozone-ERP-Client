@@ -1,1 +1,18 @@
-<p>login works!</p>
+<main>
+  <div id="login-form">
+    <h1>RACS</h1>
+    <h3>Rosters & Cover System</h3>
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput type="text">
+      <mat-icon matPrefix>person</mat-icon>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput type="password">
+      <mat-icon matPrefix>lock</mat-icon>
+    </mat-form-field>
+    <button mat-stroked-button type="button" color="primary">Sign in</button>
+    <a routerLink="" mat-button>Reset Password</a>
+  </div>
+</main>

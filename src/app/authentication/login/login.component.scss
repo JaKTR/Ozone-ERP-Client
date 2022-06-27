@@ -1,0 +1,28 @@
+@use 'src/common' as common;
+@use '@angular/material' as mat;
+
+main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(
+      45deg,
+      mat.get-color-from-palette(common.$primary-palette, 200),
+      mat.get-color-from-palette(common.$accent-palette, 200),
+  );
+}
+
+#login-form {
+  border-radius: .3rem;
+  padding: 2rem;
+  background: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  button {
+    margin: .2rem;
+  }
+}
