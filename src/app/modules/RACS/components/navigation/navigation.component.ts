@@ -1,9 +1,9 @@
 import {AfterViewInit, Component, ElementRef, Input, QueryList, ViewChildren} from '@angular/core';
-import {NavConfig} from "../../interfaces";
+import {NavConfig} from "../../../../interfaces";
 import {MatMenuTrigger} from "@angular/material/menu";
 
 @Component({
-  selector: 'app-navigation',
+  selector: 'racs-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss']
 })

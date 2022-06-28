@@ -1,5 +1,5 @@
 <main>
-  <div id="login-form">
+  <form [formGroup]="loginForm">
     <h1>RACS</h1>
     <h3>Rosters & Cover System</h3>
     <mat-form-field appearance="outline">
@@ -12,7 +12,7 @@
       <input matInput type="password">
       <mat-icon matPrefix>lock</mat-icon>
     </mat-form-field>
-    <button mat-stroked-button type="button" color="primary">Sign in</button>
-    <a routerLink="" mat-button>Reset Password</a>
-  </div>
+    <button color="primary" mat-stroked-button type="submit">Login</button>
+    <a mat-button routerLink="">Reset Password</a>
+  </form>
 </main>

@@ -1,6 +1,7 @@
 import {Component, ElementRef, ViewChild} from '@angular/core';
-import {NavConfig} from "../interfaces";
-import {mainNavItems} from "./mainNav.struct";
+import {NavConfig} from "../../interfaces";
+import {mainNavItems} from "./models/mainNav.struct";
+import {Title} from "@angular/platform-browser";
 
 @Component({
   selector: 'app-racs',
@@ -8,7 +9,6 @@ import {mainNavItems} from "./mainNav.struct";
   styleUrls: ['./racs.component.scss']
 })
 export class RacsComponent {
-  title = 'RACS';
 
   @ViewChild('drawerToggleBtn', {read: ElementRef})
   private readonly _drawerToggleBtn!: ElementRef;
@@ -21,7 +21,8 @@ export class RacsComponent {
     navItems: mainNavItems,
   }
 
-  constructor() {
+  constructor(private _title: Title) {
+    this._title.setTitle('RACS');
   }
 
 

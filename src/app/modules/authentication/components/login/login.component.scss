@@ -1,5 +1,5 @@
 @use 'src/common' as common;
-@use '@angular/material' as mat;
+@use 'node_modules/@angular/material/index' as mat;
 
 main {
   display: flex;
@@ -14,14 +14,19 @@ main {
   );
 }
 
-#login-form {
-  border-radius: .3rem;
-  padding: 2rem;
+form {
+  border-radius: .5rem;
+  padding: 2.5rem;
   background: white;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+
+  h1 {
+    margin-bottom: .2rem;
+  }
+
   button {
     margin: .2rem;
   }

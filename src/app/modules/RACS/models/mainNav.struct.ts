@@ -1,4 +1,4 @@
-import {NavItem} from "../interfaces";
+import {NavItem} from "../../../interfaces";
 
 let navItems: NavItem[] = [
   {
