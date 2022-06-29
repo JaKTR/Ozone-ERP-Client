@@ -1,18 +1,19 @@
 <main>
-  <form [formGroup]="loginForm">
+  <form [formGroup]="loginForm" (ngSubmit)="login()">
     <h1>RACS</h1>
     <h3>Rosters & Cover System</h3>
     <mat-form-field appearance="outline">
       <mat-label>Username</mat-label>
-      <input matInput type="text">
+      <input matInput type="text" formControlName="username">
       <mat-icon matPrefix>person</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline">
       <mat-label>Password</mat-label>
-      <input matInput type="password">
+      <input matInput type="password" formControlName="password">
       <mat-icon matPrefix>lock</mat-icon>
     </mat-form-field>
     <button color="primary" mat-stroked-button type="submit">Login</button>
     <a mat-button routerLink="">Reset Password</a>
+    <div *ngIf="loginError | async as error">{{error}}</div>
   </form>
 </main>

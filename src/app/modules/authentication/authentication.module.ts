@@ -9,6 +9,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {RouterModule} from "@angular/router";
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {Title} from "@angular/platform-browser";
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import {Title} from "@angular/platform-browser";
     MatButtonModule,
     RouterModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    HttpClientModule
   ],
   providers: [
     Title
