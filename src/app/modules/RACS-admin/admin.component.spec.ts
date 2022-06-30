@@ -42,12 +42,12 @@ describe('AdminComponent', () => {
       expect(tabGroup).toBeTruthy();
       expect(tabs.length).toBe(Object.keys(tabLabelIconPairs).length);
 
-      // Check labels and icons for each tab
-      tabs.forEach((tab: any) => {
-        const label: string = tab.querySelector('mat-label').innerText;
-        const icon: string = tab.querySelector('mat-icon').innerText;
+      fixture.whenStable().then(() => {
+        tabs.forEach((tab: any) => {
+          const label: string = tab.querySelector('mat-label').innerText;
+          const icon: string = tab.querySelector('mat-icon').innerText;
 
-        fixture.whenStable().then(() => {
+          // Check labels and icons for each tab
           expect(label in tabLabelIconPairs).toBeTruthy();
           expect(tabLabelIconPairs[label]).toBe(icon)
         });
