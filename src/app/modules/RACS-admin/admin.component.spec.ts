@@ -42,7 +42,7 @@ describe('AdminComponent', () => {
       expect(tabGroup).toBeTruthy();
       expect(tabs.length).toBe(Object.keys(tabLabelIconPairs).length);
 
-      fixture.whenStable().then(() => {
+      fixture.whenRenderingDone().then(() => {
         tabs.forEach((tab: any) => {
           const label: string = tab.querySelector('mat-label').innerText;
           const icon: string = tab.querySelector('mat-icon').innerText;
