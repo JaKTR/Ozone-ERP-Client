@@ -21,7 +21,6 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-    - uses: browser-actions/setup-chrome@latest
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -29,5 +28,5 @@ jobs:
         cache: 'npm'
     - run: npm ci
     - run: npm run build --if-present
-    - run: npm test -- --watch=false --code-coverage=true
+    - run: npm test -- --watch=false --browsers=ChromeHeadless --code-coverage=true
     - run: npm run make-badges -- --logo="jasmine" --style="for-the-badge" --ci

@@ -21,20 +21,19 @@ describe('AdminComponent', () => {
       declarations: [AdminComponent],
       imports: [RacsAdminModule, BrowserAnimationsModule],
       providers: [BreakpointObserver]
-    })
-      .compileComponents();
+    }).compileComponents();
 
-    fixture = TestBed.createComponent(AdminComponent);
-    compiled = fixture.nativeElement;
-    component = fixture.componentInstance;
-    fixture.detectChanges();
+    fixture = await TestBed.createComponent(AdminComponent);
+    compiled = await fixture.nativeElement;
+    component = await fixture.componentInstance;
+    await fixture.detectChanges();
   });
 
   it('should create and show tabs with labels in Web View', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show tab labels and icons', function () {
+  it('should show tab labels and icons', () => {
     let tabGroup = compiled.querySelector('mat-tab-group');
     let tabs: any[] = compiled.querySelectorAll('[role="tab"]');
     expect(component).toBeTruthy();

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {BreakpointObserver, Breakpoints, BreakpointState} from "@angular/cdk/layout";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'racs-admin',
@@ -8,18 +9,13 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 })
 export class AdminComponent implements OnInit {
 
-  private _isWeb: boolean = false;
-
   constructor(private _breakpointObserver: BreakpointObserver) { }
 
-  public get isWeb(): boolean {
-    return this._isWeb;
+  public get isWeb(): Observable<BreakpointState> {
+    return this._breakpointObserver.observe(Breakpoints.Web);
   }
 
   ngOnInit(): void {
-    this._breakpointObserver.observe([Breakpoints.Web]).subscribe(result => {
-      this._isWeb = result.matches;
-    });
   }
 
 }
