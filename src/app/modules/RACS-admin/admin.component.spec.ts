@@ -4,8 +4,6 @@ import {AdminComponent} from './admin.component';
 import {RacsAdminModule} from "./racs-admin.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BreakpointObserver} from "@angular/cdk/layout";
-import {By} from "@angular/platform-browser";
-import {DebugElement} from "@angular/core";
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -37,16 +35,16 @@ describe('AdminComponent', () => {
   });
 
   it('should show tab labels and icons', function () {
-    let tabGroup: DebugElement = fixture.debugElement.query(By.css('mat-tab-group'));
-    let tabs: DebugElement[] = fixture.debugElement.queryAll(By.css('[role="tab"]'));
+    let tabGroup = compiled.querySelector('mat-tab-group');
+    let tabs: any[] = compiled.querySelectorAll('[role="tab"]');
     expect(component).toBeTruthy();
     expect(tabGroup).toBeTruthy();
     expect(tabs.length).toBe(Object.keys(tabLabelIconPairs).length);
 
     // Check labels and icons for each tab
-    tabs.forEach((tab: DebugElement) => {
-      const label: string = tab.query(By.css('mat-label')).nativeElement.innerText;
-      const icon: string = tab.query(By.css('mat-icon')).nativeElement.innerText;
+    tabs.forEach((tab: any) => {
+      const label: string = tab.querySelector('mat-label').innerText;
+      const icon: string = tab.querySelector('mat-icon').innerText;
 
       expect(label in tabLabelIconPairs).toBeTruthy();
       expect(tabLabelIconPairs[label]).toBe(icon)
