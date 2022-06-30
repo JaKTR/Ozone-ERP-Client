@@ -8,7 +8,7 @@ import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
 })
 export class AdminComponent implements OnInit {
 
-  private _isWeb: boolean = this._breakpointObserver.isMatched(Breakpoints.Web);
+  private _isWeb: boolean = false;
 
   constructor(private _breakpointObserver: BreakpointObserver) { }
 
@@ -17,6 +17,9 @@ export class AdminComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this._breakpointObserver.observe([Breakpoints.Web]).subscribe(result => {
+      this._isWeb = result.matches;
+    });
   }
 
 }
