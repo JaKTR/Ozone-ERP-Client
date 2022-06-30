@@ -3,12 +3,11 @@ import {ComponentFixture, TestBed} from '@angular/core/testing';
 import {AdminComponent} from './admin.component';
 import {RacsAdminModule} from "./racs-admin.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {BreakpointObserver, Breakpoints} from "@angular/cdk/layout";
+import {BreakpointObserver} from "@angular/cdk/layout";
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
   let fixture: ComponentFixture<AdminComponent>;
-  let observer: BreakpointObserver;
   let compiled: any;
   const tabLabelIconPairs: { [key: string]: string; } = {
     Membership: 'groups',
@@ -28,7 +27,6 @@ describe('AdminComponent', () => {
     fixture = TestBed.createComponent(AdminComponent);
     compiled = fixture.nativeElement;
     component = fixture.componentInstance;
-    observer = TestBed.inject(BreakpointObserver);
     fixture.detectChanges();
   });
 
@@ -45,16 +43,10 @@ describe('AdminComponent', () => {
 
     // Check labels and icons for each tab
     tabs.forEach((tab: any) => {
-      const label: string = tab.querySelector('mat-label').innerText;
-      const icon: string = tab.querySelector('mat-icon').innerText;
+      const label: string = tab.querySelector('mat-label').textContent.trim();
+      const icon: string = tab.querySelector('mat-icon').textContent.trim();
 
-      // Only check label if in web view
-      if (observer.isMatched(Breakpoints.Web)) {
-        expect(label in tabLabelIconPairs).toBeTruthy();
-        console.log('got here');
-      }
-
-      // Check icons
+      expect(label in tabLabelIconPairs).toBeTruthy();
       expect(tabLabelIconPairs[label]).toBe(icon)
     });
   });
