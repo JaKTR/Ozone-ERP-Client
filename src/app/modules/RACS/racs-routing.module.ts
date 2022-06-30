@@ -1,11 +1,18 @@
 import {NgModule} from '@angular/core';
 import {RouterModule, Routes} from '@angular/router';
+import {RacsComponent} from "./racs.component";
 import {ProfileComponent} from "./components/profile/profile.component";
+import {RacsAdminModule} from "../RACS-admin/racs-admin.module";
 
 const routes: Routes = [
   {
-    path: '', component: ProfileComponent, pathMatch: 'full', children: [
-      {path: 'checks', component: ProfileComponent},
+    path: '', component: RacsComponent, children: [
+      {path: '', redirectTo: 'profile', pathMatch: 'full'},
+      {path: 'profile', component: ProfileComponent},
+      {
+        path: 'admin',
+        loadChildren: () => RacsAdminModule
+      },
     ]
   },
 ];

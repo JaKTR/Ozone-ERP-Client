@@ -10,7 +10,6 @@ import {MatInputModule} from "@angular/material/input";
 import {MatIconModule} from "@angular/material/icon";
 import {MatButtonModule} from "@angular/material/button";
 import {AuthenticationModule} from "./modules/authentication/authentication.module";
-import {RacsModule} from "./modules/RACS/racs.module";
 
 @NgModule({
   declarations: [
@@ -26,7 +25,6 @@ import {RacsModule} from "./modules/RACS/racs.module";
     MatIconModule,
     MatButtonModule,
     AuthenticationModule,
-    RacsModule
   ],
   bootstrap: [AppComponent]
 })

@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     password: [null, Validators.required]
   })
 
-  private loginError$: Observable<any> | undefined;
+  private loginError$: Observable<boolean> | undefined;
 
   constructor(private _fb: FormBuilder, private _title: Title, private _authService: AuthenticationService) {
     this._title.setTitle('Login');
@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
     return this._loginForm;
   }
 
-  public get loginError(): Observable<any> | undefined {
+  public get loginError(): Observable<boolean> | undefined {
     return this.loginError$;
   }
 

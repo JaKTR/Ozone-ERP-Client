@@ -4,7 +4,7 @@ let navItems: NavItem[] = [
   {
     id: 'home',
     label: 'Home',
-    routerLink: '/home',
+    routerLink: 'home',
     linkActiveClass: 'nav-btn-active',
   },
   {
@@ -41,7 +41,7 @@ let navItems: NavItem[] = [
   {
     id: 'profile',
     label: 'Profile',
-    routerLink: '/profile',
+    routerLink: 'profile',
     linkActiveClass: 'nav-btn-active',
   },
   {
@@ -72,6 +72,12 @@ let navItems: NavItem[] = [
     id: 'issues',
     label: 'Known Issues',
     routerLink: '/issues',
+    linkActiveClass: 'nav-btn-active',
+  },
+  {
+    id: 'admin',
+    label: 'Admin',
+    routerLink: 'admin',
     linkActiveClass: 'nav-btn-active',
   },
   {
