@@ -1,4 +1,4 @@
-import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
+import {ComponentFixture, TestBed} from '@angular/core/testing';
 
 import {AdminComponent} from './admin.component';
 import {RacsAdminModule} from "./racs-admin.module";
@@ -24,8 +24,8 @@ describe('AdminComponent', () => {
       providers: [BreakpointObserver]
     }).compileComponents();
 
-    fixture = TestBed.createComponent(AdminComponent);
-    observer = TestBed.inject(BreakpointObserver);
+    fixture = await TestBed.createComponent(AdminComponent);
+    observer = await TestBed.inject(BreakpointObserver);
     compiled = fixture.nativeElement;
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -35,22 +35,20 @@ describe('AdminComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should show tab labels and icons', waitForAsync(() => {
-    {
-      let tabGroup = compiled.querySelector('mat-tab-group');
-      let tabs: any[] = compiled.querySelectorAll('[role="tab"]');
-      expect(component).toBeTruthy();
-      expect(tabGroup).toBeTruthy();
-      expect(tabs.length).toBe(Object.keys(tabLabelIconPairs).length);
+  it('should show tab labels and icons', () => {
+    let tabGroup = compiled.querySelector('mat-tab-group');
+    let tabs: any[] = compiled.querySelectorAll('[role="tab"]');
+    expect(component).toBeTruthy();
+    expect(tabGroup).toBeTruthy();
+    expect(tabs.length).toBe(Object.keys(tabLabelIconPairs).length);
 
-      // Check labels and icons for each tab
-      tabs.forEach((tab: any) => {
-        const label: string = tab.querySelector('mat-label').innerText;
-        const icon: string = tab.querySelector('mat-icon').innerText;
+    // Check labels and icons for each tab
+    tabs.forEach((tab: any) => {
+      const label: string = tab.querySelector('mat-label').innerText;
+      const icon: string = tab.querySelector('mat-icon').innerText;
 
-        expect(label in tabLabelIconPairs).toBeTruthy();
-        expect(tabLabelIconPairs[label]).toBe(icon)
-      });
-    }
-  }));
+      expect(label in tabLabelIconPairs).toBeTruthy();
+      expect(tabLabelIconPairs[label]).toBe(icon)
+    });
+  });
 });
