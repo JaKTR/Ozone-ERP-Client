@@ -3,7 +3,8 @@ import {ComponentFixture, TestBed, waitForAsync} from '@angular/core/testing';
 import {AdminComponent} from './admin.component';
 import {RacsAdminModule} from "./racs-admin.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {BreakpointObserver} from "@angular/cdk/layout";
+import {BreakpointObserver, BreakpointState} from "@angular/cdk/layout";
+import {of} from "rxjs";
 
 describe('AdminComponent', () => {
   let component: AdminComponent;
@@ -42,12 +43,13 @@ describe('AdminComponent', () => {
       expect(tabGroup).toBeTruthy();
       expect(tabs.length).toBe(Object.keys(tabLabelIconPairs).length);
 
-      fixture.whenRenderingDone().then(() => {
+      fixture.whenStable().then(() => {
         tabs.forEach((tab: any) => {
           const label: string = tab.querySelector('mat-label').innerText;
           const icon: string = tab.querySelector('mat-icon').innerText;
 
           // Check labels and icons for each tab
+          fixture.detectChanges();
           expect(label in tabLabelIconPairs).toBeTruthy();
           expect(tabLabelIconPairs[label]).toBe(icon)
         });
