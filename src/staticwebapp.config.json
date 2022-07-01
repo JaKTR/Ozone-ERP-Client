@@ -1,8 +1,15 @@
 {
   "routes": [
     {
-      "route": "*",
-      "redirect": "/"
+      "route": "/*",
+      "redirect": "/index.html",
+      "statusCode": 200
     }
-  ]
+  ],
+  "navigationFallback": {
+    "rewrite": "index.html"
+  },
+  "mimeTypes": {
+    ".json": "text/json"
+  }
 }
