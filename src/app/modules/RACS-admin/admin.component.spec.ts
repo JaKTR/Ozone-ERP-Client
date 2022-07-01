@@ -44,6 +44,7 @@ describe('AdminComponent', () => {
       expect(tabs.length).toBe(Object.keys(tabLabelIconPairs).length);
 
       fixture.whenStable().then(() => {
+        const spy = spyOn(observer, 'observe').and.returnValue(of({matches: true} as BreakpointState));
         tabs.forEach((tab: any) => {
           const label: string = tab.querySelector('mat-label').innerText;
           const icon: string = tab.querySelector('mat-icon').innerText;
