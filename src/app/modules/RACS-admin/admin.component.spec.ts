@@ -6,6 +6,17 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BreakpointObserver, BreakpointState} from "@angular/cdk/layout";
 import {of} from "rxjs";
 
+export class BreakpointObserverStub {
+  observe(): BreakpointState {
+    return {
+      matches: true,
+      breakpoints: {
+        "web": true
+      }
+    } as BreakpointState
+  }
+}
+
 describe('AdminComponent', () => {
   let component: AdminComponent;
   let fixture: ComponentFixture<AdminComponent>;
@@ -22,7 +33,7 @@ describe('AdminComponent', () => {
     await TestBed.configureTestingModule({
       declarations: [AdminComponent],
       imports: [RacsAdminModule, BrowserAnimationsModule],
-      providers: [BreakpointObserver]
+      providers: [{BreakpointObserver, useClass: BreakpointObserverStub}]
     }).compileComponents();
 
     fixture = await TestBed.createComponent(AdminComponent);
@@ -44,7 +55,7 @@ describe('AdminComponent', () => {
       expect(tabs.length).toBe(Object.keys(tabLabelIconPairs).length);
 
       fixture.whenStable().then(() => {
-        const spy = spyOn(observer, 'observe').and.returnValue(of({matches: true} as BreakpointState));
+        // const spy = spyOn(fixture, 'observe').and.returnValue(of({matches: true} as BreakpointState));
         tabs.forEach((tab: any) => {
           const label: string = tab.querySelector('mat-label').innerText;
           const icon: string = tab.querySelector('mat-icon').innerText;
