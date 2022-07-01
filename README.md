@@ -6,7 +6,7 @@
 
 | Statements                  | Branches                | Functions                 | Lines             |
 | --------------------------- | ----------------------- | ------------------------- | ----------------- |
-| ![Statements](https://img.shields.io/badge/statements-60%25-red.svg?style=for-the-badge&logo=jasmine) | ![Branches](https://img.shields.io/badge/branches-0%25-red.svg?style=for-the-badge&logo=jasmine) | ![Functions](https://img.shields.io/badge/functions-42.85%25-red.svg?style=for-the-badge&logo=jasmine) | ![Lines](https://img.shields.io/badge/lines-50%25-red.svg?style=for-the-badge&logo=jasmine) |
+| ![Statements](https://img.shields.io/badge/statements-85.71%25-yellow.svg?style=for-the-badge) | ![Branches](https://img.shields.io/badge/branches-75%25-red.svg?style=for-the-badge) | ![Functions](https://img.shields.io/badge/functions-73.07%25-red.svg?style=for-the-badge) | ![Lines](https://img.shields.io/badge/lines-81.48%25-yellow.svg?style=for-the-badge) |
 
 # RACS
 
