@@ -1,6 +1,7 @@
 import {AfterViewInit, Component, ElementRef, Input, QueryList, ViewChildren} from '@angular/core';
 import {NavConfig} from "../../../../interfaces";
 import {MatMenuTrigger} from "@angular/material/menu";
+import {AuthenticationService} from "../../../authentication/services/authentication.service";
 
 @Component({
   selector: 'racs-navigation',
@@ -17,7 +18,7 @@ export class NavigationComponent implements AfterViewInit {
 
   private readonly _dropMenuData = {} as any;
 
-  constructor() { }
+  constructor(private _authService: AuthenticationService) { }
 
   ngAfterViewInit() {
     this._populateDropMenuData();
@@ -38,6 +39,10 @@ export class NavigationComponent implements AfterViewInit {
         triggerWidth: trigger.nativeElement.clientWidth,
       };
     });
+  }
+
+  public logout(): void {
+    this._authService.logoutUser();
   }
 
   public menuData(triggerID: string) {

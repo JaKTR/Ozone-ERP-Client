@@ -2,6 +2,7 @@
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <h1>RACS</h1>
     <h3>Rosters & Cover System</h3>
+    <mat-label class="color-warn" *ngIf="loginResponse | async as response">{{response}}</mat-label>
     <mat-form-field appearance="outline">
       <mat-label>Username</mat-label>
       <input matInput type="text" formControlName="username">
@@ -14,6 +15,5 @@
     </mat-form-field>
     <button color="primary" mat-stroked-button type="submit">Login</button>
     <a mat-button routerLink="">Reset Password</a>
-    <div *ngIf="loginError | async as error">{{error}}</div>
   </form>
 </main>

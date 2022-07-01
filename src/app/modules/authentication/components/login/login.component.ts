@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {Title} from "@angular/platform-browser";
 import {AuthenticationService} from "../../services/authentication.service";
-import {catchError, ignoreElements, Observable, of} from "rxjs";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-login',
@@ -16,7 +16,7 @@ export class LoginComponent implements OnInit {
     password: [null, Validators.required]
   })
 
-  private loginError$: Observable<boolean> | undefined;
+  private loginResponse$: Observable<any> | undefined
 
   constructor(private _fb: FormBuilder, private _title: Title, private _authService: AuthenticationService) {
     this._title.setTitle('Login');
@@ -26,17 +26,13 @@ export class LoginComponent implements OnInit {
     return this._loginForm;
   }
 
-  public get loginError(): Observable<boolean> | undefined {
-    return this.loginError$;
+  public get loginResponse(): Observable<any> | undefined {
+    return this.loginResponse$
   }
 
   public login(): void {
     if(this._loginForm.valid) {
-      const loginResponse$ = this._authService.login(this._loginForm.value.username, this._loginForm.value.password);
-      this.loginError$ = loginResponse$.pipe(
-        ignoreElements(),
-        catchError((err) => of(err))
-      )
+     this.loginResponse$ = this._authService.login(this._loginForm.value.username, this._loginForm.value.password);
     }
   }
 
