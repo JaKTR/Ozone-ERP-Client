@@ -9,9 +9,9 @@ import {of} from "rxjs";
 export class BreakpointObserverStub {
   observe(): BreakpointState {
     return {
-      matches: true,
+      matches: false,
       breakpoints: {
-        "web": true
+        "web": false
       }
     } as BreakpointState
   }
@@ -55,7 +55,12 @@ describe('AdminComponent', () => {
       expect(tabs.length).toBe(Object.keys(tabLabelIconPairs).length);
 
       fixture.whenStable().then(() => {
-        // const spy = spyOn(fixture, 'observe').and.returnValue(of({matches: true} as BreakpointState));
+        const spy = spyOn(observer, 'observe').and.returnValue(of({
+          matches: true,
+          breakpoints: {
+            "web": true
+          }
+        } as BreakpointState));
         tabs.forEach((tab: any) => {
           const label: string = tab.querySelector('mat-label').innerText;
           const icon: string = tab.querySelector('mat-icon').innerText;
