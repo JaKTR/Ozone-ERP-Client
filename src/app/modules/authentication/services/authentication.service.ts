@@ -59,8 +59,6 @@ export class AuthenticationService {
    * @private This error handler is specific to the service, and as such should have private access
    */
   private static handleErrors(error: HttpErrorResponse, caught: Observable<any>): Observable<any> {
-    console.log(error);
-    console.log(caught);
     const status: number = error.status;
     let returnValue: any;
 
