@@ -13,16 +13,16 @@ $warn-palette: map.get($color-config, 'warn');
   color: mat.get-color-from-palette($primary-palette, $hue);
 }
 
-@mixin backgroundColorPrimary($hue) {
-  background-color: mat.get-color-from-palette($primary-palette, $hue);
+@mixin backgroundColorPrimary($hue, $transparency) {
+  background-color: transparentize(mat.get-color-from-palette($primary-palette, $hue), $transparency);
 }
 
 @mixin colorAccent($hue) {
   color: mat.get-color-from-palette($accent-palette, $hue);
 }
 
-@mixin backgroundColorAccent($hue) {
-  background-color: mat.get-color-from-palette($accent-palette, $hue);
+@mixin backgroundColorAccent($hue, $transparency) {
+  background-color: transparentize(mat.get-color-from-palette($accent-palette, $hue), $transparency);
 }
 
 @mixin colorWarn($hue) {

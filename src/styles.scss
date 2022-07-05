@@ -10,8 +10,8 @@
 // Define the palettes for your theme using the Material Design palettes available in palette.scss
 // (imported above). For each palette, you can optionally specify a default, lighter, and darker
 // hue. Available color palettes: https://material.io/design/color/
-$RACS-primary: mat.define-palette(mat.$deep-orange-palette);
-$RACS-accent: mat.define-palette(mat.$lime-palette, A200, A100, A400);
+$RACS-primary: mat.define-palette(mat.$teal-palette);
+$RACS-accent: mat.define-palette(mat.$blue-palette, A200, A100, A400);
 $RACS-warn: mat.define-palette(mat.$red-palette);
 
 // Create the theme object. A theme consists of configurations for individual

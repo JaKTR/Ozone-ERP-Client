@@ -33,6 +33,6 @@ nav {
 }
 
 .nav-btn-active {
-  @include common.colorWarn(500);
-  @include common.backgroundColorWarn(500, 0.9);
+  @include common.colorPrimary(500);
+  @include common.backgroundColorPrimary(500, 0.9);
 }

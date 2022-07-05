@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import {Injectable, isDevMode} from '@angular/core';
 import {
   ActivatedRouteSnapshot,
   CanActivate, CanActivateChild,
@@ -20,14 +20,17 @@ export class RacsGuardService implements CanLoad, CanActivate, CanActivateChild 
   constructor(private _authService: AuthenticationService, private _router: Router) { }
 
   canLoad(route: Route, segments: UrlSegment[]): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if(isDevMode()) return true;
     return this._authService.isLoggedIn ? true : this._router.parseUrl("/login");
   }
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if(isDevMode()) return true;
     return this._authService.isLoggedIn ? true : this._router.parseUrl("/login");
   }
 
   canActivateChild(childRoute: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    if(isDevMode()) return true;
     return this._authService.isLoggedIn ? true : this._router.parseUrl("/login");
   }
 }
