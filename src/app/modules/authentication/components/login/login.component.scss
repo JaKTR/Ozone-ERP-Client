@@ -31,4 +31,13 @@ form {
   button {
     margin: .2rem;
   }
+
+  #error-box {
+    margin: 0.35rem;
+    padding: .45rem;
+    border-radius: 5px;
+    @include common.borderWarn(2px, solid, 500, .3);
+    @include common.backgroundColorWarn(500, .8);
+    @include common.colorWarn(500);
+  }
 }

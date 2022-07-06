@@ -12,7 +12,7 @@ const USER_TOKEN_KEY: string = "sessionID"
 })
 export class AuthenticationService {
 
-  private _authenticationAPI: string = `${environment.IAM_URL}identity_access_management`;
+  private _authenticationAPI: string = `${environment.IAM_URL}/authorize`;
   private _isLoggedIn: boolean = false;
 
   constructor(private _http: HttpClient, private _router: Router) {}
@@ -63,7 +63,7 @@ export class AuthenticationService {
     let returnValue: any;
 
     switch (status) {
-      case 401: returnValue = 'Incorrect username or password'
+      case 401: returnValue = 'Authentication failed';
     }
     return of(returnValue);
   }

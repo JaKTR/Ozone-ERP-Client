@@ -2,7 +2,9 @@
   <form [formGroup]="loginForm" (ngSubmit)="login()">
     <h1>RACS</h1>
     <h3>Rosters & Cover System</h3>
-    <mat-label class="color-warn" *ngIf="loginResponse | async as response">{{response}}</mat-label>
+    <div id="error-box" *ngIf="loginResponse | async as response">
+      <mat-label>{{response}}</mat-label>
+    </div>
     <mat-form-field appearance="outline">
       <mat-label>Username</mat-label>
       <input matInput type="text" formControlName="username">

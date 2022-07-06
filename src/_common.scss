@@ -17,6 +17,10 @@ $warn-palette: map.get($color-config, 'warn');
   background-color: transparentize(mat.get-color-from-palette($primary-palette, $hue), $transparency);
 }
 
+@mixin borderPrimary($line-width, $line-style, $color-hue, $color-transparency) {
+  border: $line-width $line-style transparentize(mat.get-color-from-palette($primary-palette, $color-hue), $color-transparency);
+}
+
 @mixin colorAccent($hue) {
   color: mat.get-color-from-palette($accent-palette, $hue);
 }
@@ -36,6 +40,10 @@ $warn-palette: map.get($color-config, 'warn');
  */
 @mixin backgroundColorWarn($hue, $transparency) {
   background: transparentize(mat.get-color-from-palette($warn-palette, $hue), $transparency);
+}
+
+@mixin borderWarn($line-width, $line-style, $color-hue, $color-transparency) {
+  border: $line-width $line-style transparentize(mat.get-color-from-palette($warn-palette, $color-hue), $color-transparency);
 }
 
 @mixin displayFlex($direction, $justifyContent, $alignItems) {

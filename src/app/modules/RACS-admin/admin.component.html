@@ -1,27 +1,27 @@
 <mat-tab-group>
-  <mat-tab>
+  <mat-tab class="h-100">
     <ng-template mat-tab-label>
       <mat-icon
-        [matTooltipDisabled]="(isWeb | async)!.matches"
+        [matTooltipDisabled]="(responsiveService.isWeb | async)!.matches"
         [matTooltipShowDelay]="0"
         matTooltip="Membership"
         matTooltipPosition="after"
       >groups
       </mat-icon>
-      <mat-label *ngIf="(isWeb | async)?.matches" class="tab-mat-label">Membership</mat-label>
+      <mat-label *ngIf="(responsiveService.isWeb | async)?.matches" class="tab-mat-label">Membership</mat-label>
     </ng-template>
-    Content 1
+    <racs-admin-membership-CRUD class="h-100 w-100"></racs-admin-membership-CRUD>
   </mat-tab>
 
   <mat-tab>
     <ng-template mat-tab-label>
       <mat-icon
-        [matTooltipDisabled]="(isWeb | async)!.matches"
+        [matTooltipDisabled]="(responsiveService.isWeb | async)!.matches"
         [matTooltipShowDelay]="0"
         matTooltip="Rosters"
         matTooltipPosition="after">calendar_month
       </mat-icon>
-      <mat-label *ngIf="(isWeb | async)?.matches" class="tab-mat-label">Rosters</mat-label>
+      <mat-label *ngIf="(responsiveService.isWeb | async)?.matches" class="tab-mat-label">Rosters</mat-label>
     </ng-template>
     Content 2
   </mat-tab>
@@ -29,12 +29,12 @@
   <mat-tab>
     <ng-template mat-tab-label>
       <mat-icon
-        [matTooltipDisabled]="(isWeb | async)!.matches"
+        [matTooltipDisabled]="(responsiveService.isWeb | async)!.matches"
         [matTooltipShowDelay]="0"
         matTooltip="Notifications"
         matTooltipPosition="after">edit_notifications
       </mat-icon>
-      <mat-label *ngIf="(isWeb | async)?.matches" class="tab-mat-label">Notifications</mat-label>
+      <mat-label *ngIf="(responsiveService.isWeb | async)?.matches" class="tab-mat-label">Notifications</mat-label>
     </ng-template>
 
     Content 3
@@ -43,12 +43,12 @@
   <mat-tab>
     <ng-template mat-tab-label>
       <mat-icon
-        [matTooltipDisabled]="(isWeb | async)!.matches"
+        [matTooltipDisabled]="(responsiveService.isWeb | async)!.matches"
         [matTooltipShowDelay]="0"
         matTooltip="Security"
         matTooltipPosition="after">shields
       </mat-icon>
-      <mat-label *ngIf="(isWeb | async)?.matches" class="tab-mat-label">Security</mat-label>
+      <mat-label *ngIf="(responsiveService.isWeb | async)?.matches" class="tab-mat-label">Security</mat-label>
     </ng-template>
 
     Content 3
