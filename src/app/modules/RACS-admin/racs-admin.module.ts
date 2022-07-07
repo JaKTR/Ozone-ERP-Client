@@ -16,6 +16,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {MatDialogModule} from "@angular/material/dialog";
 import {MatGridListModule} from "@angular/material/grid-list";
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatDividerModule} from "@angular/material/divider";
 
 @NgModule({
   declarations: [
@@ -23,21 +24,22 @@ import {ReactiveFormsModule} from "@angular/forms";
     MembershipCRUDComponent,
     MemberCreateDialogComponent
   ],
-  imports: [
-    CommonModule,
-    RacsAdminRoutingModule,
-    MatTabsModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatTooltipModule,
-    MatTableModule,
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatGridListModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        CommonModule,
+        RacsAdminRoutingModule,
+        MatTabsModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatTooltipModule,
+        MatTableModule,
+        MatInputModule,
+        MatCardModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatGridListModule,
+        ReactiveFormsModule,
+        MatDividerModule
+    ],
   exports: [
     AdminComponent
   ]
