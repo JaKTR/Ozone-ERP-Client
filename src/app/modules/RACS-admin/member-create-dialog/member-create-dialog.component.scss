@@ -1,0 +1,27 @@
+@use 'src/common' as common;
+
+
+@media (max-width: common.$breakpoint-web) {
+  form {
+    height: 85vh;
+    max-height: 85vh;
+    overflow-y: hidden;
+
+    h3 {
+      max-height: 28px;
+    }
+
+    mat-grid-list {
+      height: calc(85vh - 68px - 44px); // 85vh = form height, 68px = actions height, 44px = h3 height
+      max-height: calc(85vh - 68px - 44px);
+      padding-bottom: 0 !important;
+      overflow-y: scroll;
+    }
+
+    mat-dialog-actions {
+      height: 52px;
+      max-height: 52px;
+    }
+
+  }
+}

@@ -20,6 +20,7 @@ export class MemberCreateDialogComponent {
       Validators.required,
       Validators.pattern('^[0-9]{9}$'),
     ])],
+    role: ['', Validators.required],
   });
 
   constructor(private _fb: FormBuilder, private _dialogRef: MatDialogRef<MemberCreateDialogComponent>, public readonly responsiveService: ResponsiveService) {

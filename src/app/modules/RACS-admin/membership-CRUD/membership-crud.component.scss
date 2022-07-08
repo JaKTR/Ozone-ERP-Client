@@ -5,4 +5,23 @@ table {
 mat-card {
   height: 100%;
   max-height: 100%;
+  padding-top: 0;
+
+  mat-card-content {
+    height: calc(100% - 96px - 16px - .4rem - .75em); // 96px = header & actions height, 16px = mat-card padding-bottom, .3rem = header padding-bottom, .75em = mat-form-field padding-top
+    max-height: calc(100% - 96px - 16px - .4rem - .75em);
+    overflow-x: hidden;
+    overflow-y: scroll;
+  }
+
+  mat-card-header {
+    height: 56px; // Size of mat field
+    max-height: 56px;
+    padding-bottom: .4rem;
+    align-content: start;
+  }
+  mat-card-actions {
+    height: 40px;
+    max-height: 40px;
+  }
 }

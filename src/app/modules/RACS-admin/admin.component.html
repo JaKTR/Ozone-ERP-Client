@@ -1,5 +1,5 @@
 <mat-tab-group id="admin-tabs">
-  <mat-tab bodyClass="h-100 overflow-hidden">
+  <mat-tab>
     <ng-template mat-tab-label>
       <mat-icon
         [matTooltipDisabled]="(responsiveService.isWeb | async)!.matches"
@@ -10,7 +10,7 @@
       </mat-icon>
       <mat-label *ngIf="(responsiveService.isWeb | async)?.matches" class="tab-mat-label">Membership</mat-label>
     </ng-template>
-    <racs-admin-membership-CRUD class="h-100 w-100"></racs-admin-membership-CRUD>
+    <racs-admin-membership-CRUD></racs-admin-membership-CRUD>
   </mat-tab>
 
   <mat-tab>
