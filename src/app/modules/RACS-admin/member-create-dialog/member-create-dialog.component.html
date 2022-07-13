@@ -53,6 +53,7 @@
   </mat-grid-list>
 
   <mat-dialog-actions align="end">
+    <p *ngIf="createUserResponse | async as response">{{response}}</p>
     <button (click)="closeDialog()" mat-button>Cancel</button>
     <button mat-raised-button color="accent" type="submit">Submit</button>
   </mat-dialog-actions>

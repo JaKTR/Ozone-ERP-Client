@@ -5,7 +5,7 @@ import { environment } from 'src/environments/environment';
 import {LoginResponse} from "../models/login-response";
 import {Router} from "@angular/router";
 
-const USER_TOKEN_KEY: string = "sessionID"
+const USER_TOKEN_KEY: string = "Authorization"
 
 @Injectable({
   providedIn: 'root'
@@ -37,7 +37,7 @@ export class AuthenticationService {
 
   private loginUser(loginResponse: LoginResponse): void {
     window.sessionStorage.removeItem(USER_TOKEN_KEY);
-    window.sessionStorage.setItem(USER_TOKEN_KEY, JSON.stringify(loginResponse.access_token));
+    window.sessionStorage.setItem(USER_TOKEN_KEY, 'Bearer ' + JSON.stringify(loginResponse.access_token));
     this._isLoggedIn = true;
     this._router.navigate(['racs']);
   }
