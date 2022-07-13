@@ -1,5 +1,12 @@
+@use 'src/common' as common;
+
 table {
   width: 100%;
+
+  .mat-table-sticky {
+    @include common.backgroundColorPrimary(500, 0);
+    color: white;
+  }
 }
 
 mat-card {

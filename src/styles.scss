@@ -43,12 +43,10 @@ a {text-decoration: none;}
 // Scrollbar styles
 ::-webkit-scrollbar {
   width: .4rem;
-  border-radius: .5rem;
   background: mat.get-color-from-palette($primary-palette, 100);
 }
 ::-webkit-scrollbar-thumb {
   background: mat.get-color-from-palette($primary-palette, 500);
-  border-radius: .5rem;
 }
 ::-webkit-scrollbar-thumb:hover {
   background: mat.get-color-from-palette($accent-palette, 500);
