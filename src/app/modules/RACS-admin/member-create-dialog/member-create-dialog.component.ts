@@ -62,6 +62,7 @@ export class MemberCreateDialogComponent {
           username: this._newMemberForm.get('username')?.value,
           first_name: this._newMemberForm.get('firstName')?.value,
           last_name: this._newMemberForm.get('lastName')?.value,
+          email: this._newMemberForm.get('email')?.value,
           organization_id: this._newMemberForm.get('brigadeNo')?.value,
           mobile: this._newMemberForm.get('mobile')?.value,
           role: this._newMemberForm.get('role')?.value

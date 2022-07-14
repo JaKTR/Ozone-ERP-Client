@@ -71,7 +71,8 @@
               "browserTarget": "Ozone-client:build:production"
             },
             "development": {
-              "browserTarget": "Ozone-client:build:development"
+              "browserTarget": "Ozone-client:build:development",
+              "proxyConfig": "proxy.conf.js"
             }
           },
           "defaultConfiguration": "development"
