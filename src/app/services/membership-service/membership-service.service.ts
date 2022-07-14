@@ -9,12 +9,12 @@ import {User} from "../../interfaces";
 })
 export class MembershipServiceService {
 
-  private _userAPI: string = `${environment.IAM_URL}/user`
+  private _userAPI: string = `${environment.IAM_URL}user`
 
   constructor(private _http: HttpClient) { }
 
   public createUser(user: User): Observable<any> {
-    return this._http.put<any>(this._userAPI, user, {withCredentials: true})
+    return this._http.put<any>(this._userAPI, user, {headers: {'Access-Control-Allow-Origin': environment.IAM_URL}, withCredentials: true})
       .pipe(
         tap(response => console.log(response)),
         catchError(MembershipServiceService.handleErrors)

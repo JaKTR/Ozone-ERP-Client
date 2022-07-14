@@ -22,7 +22,7 @@ export class AuthenticationService {
     formData.append('username', username);
     formData.append('password', password);
 
-    return this._http.post<any>(this._authenticationAPI, formData)
+    return this._http.post<any>(this._authenticationAPI, formData, {withCredentials: true})
       .pipe(
         tap((response: LoginResponse) => {
           this.loginUser(response);
