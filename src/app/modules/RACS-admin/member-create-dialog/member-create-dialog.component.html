@@ -32,14 +32,14 @@
     <mat-grid-tile>
       <mat-form-field appearance="outline">
         <mat-label>Mobile</mat-label>
-        <input matInput type="text" formControlName="mobile">
+        <input matInput type="number" formControlName="mobile">
         <mat-error *ngIf="hasError('mobile')">{{getErrorMessage('mobile')}}</mat-error>
       </mat-form-field>
     </mat-grid-tile>
     <mat-grid-tile>
       <mat-form-field appearance="outline">
         <mat-label>Brigade no.</mat-label>
-        <input matInput type="number" formControlName="brigadeNo">
+        <input matInput type="text" formControlName="brigadeNo">
         <mat-error *ngIf="hasError('brigadeNo')">{{getErrorMessage('brigadeNo')}}</mat-error>
       </mat-form-field>
     </mat-grid-tile>

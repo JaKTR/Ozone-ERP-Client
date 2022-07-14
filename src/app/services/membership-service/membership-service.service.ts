@@ -14,7 +14,7 @@ export class MembershipServiceService {
   constructor(private _http: HttpClient) { }
 
   public createUser(user: User): Observable<any> {
-    return this._http.put<any>(this._userAPI, user)
+    return this._http.put<any>(this._userAPI, user, {withCredentials: true})
       .pipe(
         tap(response => console.log(response)),
         catchError(MembershipServiceService.handleErrors)

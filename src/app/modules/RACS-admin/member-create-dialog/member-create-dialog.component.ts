@@ -17,8 +17,8 @@ export class MemberCreateDialogComponent {
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     email: ['', Validators.required],
-    mobile: ['', Validators.required],
-    brigadeNo: [null, Validators.compose([
+    mobile: [null , Validators.required],
+    brigadeNo: ['', Validators.compose([
       Validators.required,
       Validators.pattern('^[0-9]{6}$'),
     ])],
