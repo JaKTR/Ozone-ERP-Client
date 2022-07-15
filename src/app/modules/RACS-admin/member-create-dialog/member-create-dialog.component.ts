@@ -3,7 +3,8 @@ import {MatDialogRef} from "@angular/material/dialog";
 import {ResponsiveService} from "../../../services/responsive-service/responsive.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MembershipServiceService} from "../../../services/membership-service/membership-service.service";
-import {Observable} from "rxjs";
+import {Observable, tap} from "rxjs";
+import {User} from "../../../interfaces";
 
 @Component({
   selector: 'app-member-create-dialog',
@@ -17,7 +18,7 @@ export class MemberCreateDialogComponent {
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],
     email: ['', Validators.required],
-    mobile: [null , Validators.required],
+    mobile: [null, Validators.required],
     brigadeNo: ['', Validators.compose([
       Validators.required,
       Validators.pattern('^[0-9]{6}$'),
@@ -26,6 +27,7 @@ export class MemberCreateDialogComponent {
   });
 
   private createUserResponse$: Observable<any> | undefined;
+  private _createdUser: User | undefined;
 
   constructor(
     private _fb: FormBuilder,
@@ -36,6 +38,10 @@ export class MemberCreateDialogComponent {
 
   public get newMemberForm(): FormGroup {
     return this._newMemberForm;
+  }
+
+  public get createUserResponse(): Observable<any> | undefined {
+    return this.createUserResponse$;
   }
 
   public hasError(controlName: string): boolean | undefined {
@@ -50,13 +56,15 @@ export class MemberCreateDialogComponent {
     return 'Field does not meet all requirements';
   }
 
-  public get createUserResponse(): Observable<any> | undefined {
-    return this.createUserResponse$;
-  }
-
-
+  /**
+   * Creates a new user object and passes it to the membership service to make the request to the server.
+   * The Observable returned from the request gets set to the createUserResponse$ property.
+   * Which allows for errors to be displayed to the user in the dialog.
+   * If no errors are returned, the returned user object is set to the _createdUser property.
+   * This gets passed to the closeDialog() method to close the dialog, after which the dialog is closed.
+   */
   public submitMember(): void {
-    if(this._newMemberForm.valid) {
+    if (this._newMemberForm.valid) {
       this.createUserResponse$ = this._membershipService.createUser(
         {
           username: this._newMemberForm.get('username')?.value,
@@ -67,12 +75,17 @@ export class MemberCreateDialogComponent {
           mobile: this._newMemberForm.get('mobile')?.value,
           role: this._newMemberForm.get('role')?.value
         }
+      ).pipe(
+        tap((response: User) => {
+          this._createdUser = response;
+          this.closeDialog();
+        })
       );
     }
   }
 
   public closeDialog(): void {
-    this._dialogRef.close();
+    this._dialogRef.close(this._createdUser);
   }
 
 }

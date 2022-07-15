@@ -1,35 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {MatDialog} from "@angular/material/dialog";
 import {MemberCreateDialogComponent} from "../member-create-dialog/member-create-dialog.component";
-
-// Placeholder code
-export interface PeriodicElement {
-  name: string;
-  position: number;
-  weight: number;
-  symbol: string;
-}
-
-// Placeholder code
-const ELEMENT_DATA: PeriodicElement[] = [
-  {position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'H'},
-  {position: 2, name: 'Helium', weight: 4.0026, symbol: 'He'},
-  {position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li'},
-  {position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be'},
-  {position: 5, name: 'Boron', weight: 10.811, symbol: 'B'},
-  {position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C'},
-  {position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N'},
-  {position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O'},
-  {position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-  {position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne'},
-];
+import {MembershipTableColumnDef, User} from "../../../interfaces";
+import {MatSnackBar} from "@angular/material/snack-bar";
+import {MembershipServiceService} from "../../../services/membership-service/membership-service.service";
+import {Observable, of, Subscription, take, tap} from "rxjs";
+import {MatTableDataSource} from "@angular/material/table";
+import {ResponsiveService} from "../../../services/responsive-service/responsive.service";
+import {BreakpointState} from "@angular/cdk/layout";
+import {MatSort} from "@angular/material/sort";
 
 @Component({
   selector: 'racs-admin-membership-CRUD',
@@ -38,19 +17,81 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class MembershipCRUDComponent implements OnInit {
 
-  // Placeholder code
-  displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = ELEMENT_DATA;
+  @ViewChild(MatSort) sort: MatSort | undefined;
 
-  constructor(private _memberCreateDialog: MatDialog) { }
+  public readonly columnDefinitions: MembershipTableColumnDef[] = [
+    {def: 'shortName', forMobile: true, forWeb: false},
+    {def: 'firstName', forMobile: false, forWeb: true},
+    {def: 'lastName', forMobile: false, forWeb: true},
+    {def: 'role', forMobile: true, forWeb: true},
+    {def: 'editAction', forMobile: true, forWeb: true},
+    {def: 'deleteAction', forMobile: true, forWeb: true},
+  ]
+  public displayedColumns$: Observable<string[]> = of(this.columnDefinitions.map(c => c.def));
+  private readonly subscriptions: Subscription[] = [];
 
+  constructor(
+    private _memberCreateDialog: MatDialog,
+    private _snackBar: MatSnackBar,
+    public membershipService: MembershipServiceService,
+    public responsiveService: ResponsiveService) {
+  }
+
+  private _membersData: MatTableDataSource<User> = new MatTableDataSource<User>();
+
+  public get membersData(): MatTableDataSource<User> {
+    return this._membersData;
+  }
+
+  public filter(event: Event): void {
+    const filterValue = (event.target as HTMLInputElement).value;
+    this.membersData.filter = filterValue.trim().toLowerCase();
+  }
+
+  /**
+   * Creates a dialog reference and set dialog configurations.
+   * Also sets the dialog close logic.
+   */
   public openMemberCreateDialog(): void {
     const dialogRef = this._memberCreateDialog.open(MemberCreateDialogComponent, {
       width: '500px',
     });
+
+    dialogRef.afterClosed().subscribe((result: User | undefined) => {
+      if (result) {
+        this.membersData.data = [...this.membersData.data, result];
+        this._snackBar.open(`${result.first_name} was added as a member`, 'Ok', {
+          duration: 5000
+        });
+      }
+    });
   }
 
   ngOnInit(): void {
+    // Get all members from the backed and set them to the mat table data source
+    this.subscriptions.push(
+      this.membershipService.getAllMembers().pipe(
+        tap((members: User[]) => {
+          this._membersData.data = members;
+        }),
+        take(1)
+      ).subscribe()
+    );
+
+    // Dynamically filter displayed columns based on screen size
+    this.subscriptions.push(
+      this.responsiveService.isWeb.subscribe((isWeb: BreakpointState) => this.displayedColumns$ = of(
+        this.columnDefinitions.filter(c => isWeb.matches ? c.forWeb : c.forMobile).map(c => c.def)
+      ))
+    );
+  }
+
+  ngAfterViewInit(): void {
+    if(this.sort) this._membersData.sort = this.sort;
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions.forEach(s => s.unsubscribe());
   }
 
 }

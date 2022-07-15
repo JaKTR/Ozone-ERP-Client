@@ -20,3 +20,9 @@ export interface User {
   mobile: number,
   role: string
 }
+
+export interface MembershipTableColumnDef {
+  def: string,
+  forMobile: boolean,
+  forWeb: boolean,
+}

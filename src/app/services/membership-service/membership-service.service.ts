@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpErrorResponse} from "@angular/common/http";
-import {catchError, Observable, of, tap} from "rxjs";
+import {catchError, Observable, of} from "rxjs";
 import {environment} from "../../../environments/environment";
 import {User} from "../../interfaces";
 
@@ -14,11 +14,16 @@ export class MembershipServiceService {
   constructor(private _http: HttpClient) { }
 
   public createUser(user: User): Observable<any> {
-    return this._http.put<any>(this._userAPI, user, {headers: {'Access-Control-Allow-Origin': environment.IAM_URL}, withCredentials: true})
+    return this._http.put<any>(this._userAPI, user, {withCredentials: true})
       .pipe(
-        tap(response => console.log(response)),
         catchError(MembershipServiceService.handleErrors)
       );
+  }
+
+  public getAllMembers(): Observable<User[]> {
+    return this._http.get<User[]>(`${this._userAPI}/all`, {withCredentials: true}).pipe(
+      catchError(MembershipServiceService.handleErrors)
+    );
   }
 
   /**

@@ -1,43 +1,54 @@
 <mat-card id="membership-card">
-  <mat-card-header>
+  <mat-card-title>
       <mat-form-field id="member-filter" color="accent" appearance="standard" class="w-100">
         <mat-label>Filter</mat-label>
-        <input matInput placeholder="Ex. ium" #input>
+        <input matInput (keyup)="filter($event)" #filterInput>
       </mat-form-field>
-  </mat-card-header>
+  </mat-card-title>
   <mat-card-content>
-    <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <mat-table [dataSource]="membersData" class="mat-elevation-z8" matSort>
 
-      <!--- Note that these columns can be defined in any order.
-            The actual rendered columns are set as a property on the row definition" -->
-
-      <!-- Position Column -->
-      <ng-container matColumnDef="position">
-        <th mat-header-cell *matHeaderCellDef> No. </th>
-        <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+      <!--  Response name column(s)    -->
+      <ng-container matColumnDef="firstName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="firstName">First Name</mat-header-cell>
+        <mat-cell *matCellDef="let member">{{member.first_name}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="lastName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="lastName">Last Name</mat-header-cell>
+        <mat-cell *matCellDef="let member">{{member.last_name}}</mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="shortName">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="name">Name</mat-header-cell>
+        <mat-cell *matCellDef="let member">{{member.first_name | uppercase | slice: 0:1}}. {{member.last_name}}</mat-cell>
       </ng-container>
 
-      <!-- Name Column -->
-      <ng-container matColumnDef="name">
-        <th mat-header-cell *matHeaderCellDef> Name </th>
-        <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      <ng-container matColumnDef="role">
+        <mat-header-cell *matHeaderCellDef mat-sort-header="role">Role</mat-header-cell>
+        <mat-cell *matCellDef="let member"> {{member.role}} </mat-cell>
       </ng-container>
 
-      <!-- Weight Column -->
-      <ng-container matColumnDef="weight">
-        <th mat-header-cell *matHeaderCellDef> Weight </th>
-        <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+      <ng-container matColumnDef="editAction">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let staff">
+          <button mat-icon-button>
+            <mat-icon>edit</mat-icon>
+          </button>
+        </mat-cell>
       </ng-container>
 
-      <!-- Symbol Column -->
-      <ng-container matColumnDef="symbol">
-        <th mat-header-cell *matHeaderCellDef> Symbol </th>
-        <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+      <ng-container matColumnDef="deleteAction">
+        <mat-header-cell *matHeaderCellDef></mat-header-cell>
+        <mat-cell *matCellDef="let booking">
+          <button mat-icon-button>
+            <mat-icon color="warn">delete</mat-icon>
+          </button>
+        </mat-cell>
       </ng-container>
 
-      <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-    </table>
+      <mat-header-row *matHeaderRowDef="displayedColumns$ | async; sticky: true"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns$ | async;"></mat-row>
+      <ng-template matNoDataRow class="mat-row">No data matching the filter "{{filterInput.value}}"</ng-template>
+    </mat-table>
   </mat-card-content>
 <!--  <mat-divider inset></mat-divider>-->
   <mat-card-actions align="end">

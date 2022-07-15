@@ -1,10 +1,13 @@
 @use 'src/common' as common;
 
-table {
+mat-table {
   width: 100%;
 
-  .mat-table-sticky {
+  mat-header-row {
     @include common.backgroundColorPrimary(500, 0);
+  }
+
+  mat-header-cell {
     color: white;
   }
 }
@@ -21,10 +24,12 @@ mat-card {
     overflow-y: scroll;
   }
 
-  mat-card-header {
+  mat-card-title {
     height: 56px; // Size of mat field
+    font-size: unset !important;
+    font-weight: unset !important;
+    margin: 0;
     max-height: 56px;
-    padding-bottom: .4rem;
     align-content: start;
   }
   mat-card-actions {
