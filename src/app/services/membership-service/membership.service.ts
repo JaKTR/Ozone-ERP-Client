@@ -7,7 +7,7 @@ import {User} from "../../interfaces";
 @Injectable({
   providedIn: 'root'
 })
-export class MembershipServiceService {
+export class MembershipService {
 
   private _userAPI: string = `${environment.IAM_URL}user`
 
@@ -16,13 +16,13 @@ export class MembershipServiceService {
   public createUser(user: User): Observable<any> {
     return this._http.put<any>(this._userAPI, user, {withCredentials: true})
       .pipe(
-        catchError(MembershipServiceService.handleErrors)
+        catchError(MembershipService.handleErrors)
       );
   }
 
   public getAllMembers(): Observable<User[]> {
     return this._http.get<User[]>(`${this._userAPI}/all`, {withCredentials: true}).pipe(
-      catchError(MembershipServiceService.handleErrors)
+      catchError(MembershipService.handleErrors)
     );
   }
 

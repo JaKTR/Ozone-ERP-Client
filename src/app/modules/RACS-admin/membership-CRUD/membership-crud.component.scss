@@ -1,17 +1,5 @@
 @use 'src/common' as common;
 
-mat-table {
-  width: 100%;
-
-  mat-header-row {
-    @include common.backgroundColorPrimary(500, 0);
-  }
-
-  mat-header-cell {
-    color: white;
-  }
-}
-
 mat-card {
   height: 100%;
   max-height: 100%;

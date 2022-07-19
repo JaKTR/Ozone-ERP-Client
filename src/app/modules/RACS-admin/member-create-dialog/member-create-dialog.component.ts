@@ -2,7 +2,7 @@ import {Component} from '@angular/core';
 import {MatDialogRef} from "@angular/material/dialog";
 import {ResponsiveService} from "../../../services/responsive-service/responsive.service";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {MembershipServiceService} from "../../../services/membership-service/membership-service.service";
+import {MembershipService} from "../../../services/membership-service/membership.service";
 import {Observable, tap} from "rxjs";
 import {User} from "../../../interfaces";
 
@@ -32,7 +32,7 @@ export class MemberCreateDialogComponent {
   constructor(
     private _fb: FormBuilder,
     private _dialogRef: MatDialogRef<MemberCreateDialogComponent>,
-    private _membershipService: MembershipServiceService,
+    private _membershipService: MembershipService,
     public readonly responsiveService: ResponsiveService) {
   }
 

@@ -1,0 +1,43 @@
+<mat-table [dataSource]="membersData" class="mat-elevation-z8" recycleRows matSort>
+
+  <!--  Response name column(s)    -->
+  <ng-container matColumnDef="firstName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>First Name</mat-header-cell>
+    <mat-cell *matCellDef="let member">{{member.first_name}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="lastName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Last Name</mat-header-cell>
+    <mat-cell *matCellDef="let member">{{member.last_name}}</mat-cell>
+  </ng-container>
+  <ng-container matColumnDef="shortName">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Name</mat-header-cell>
+    <mat-cell *matCellDef="let member">{{member.first_name | uppercase | slice: 0:1}}. {{member.last_name}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="role">
+    <mat-header-cell *matHeaderCellDef mat-sort-header>Role</mat-header-cell>
+    <mat-cell *matCellDef="let member"> {{member.role}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="editAction">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let staff">
+      <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="deleteAction">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let booking">
+      <button mat-icon-button>
+        <mat-icon color="warn">delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns$ | async; sticky: true"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns$ | async;"></mat-row>
+  <ng-template matNoDataRow class="mat-row">No data matching the filter "{{filterInput ? filterInput.value : ''}}"</ng-template>
+</mat-table>

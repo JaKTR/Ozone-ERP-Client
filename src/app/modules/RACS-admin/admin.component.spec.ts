@@ -5,6 +5,7 @@ import {RacsAdminModule} from "./racs-admin.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {BreakpointObserver, BreakpointState} from "@angular/cdk/layout";
 import {of} from "rxjs";
+import {HttpClient, HttpClientModule} from "@angular/common/http";
 
 export class BreakpointObserverStub {
   observe(): BreakpointState {
@@ -28,14 +29,18 @@ describe('AdminComponent', () => {
     Membership: 'groups',
     Rosters: 'calendar_month',
     Notifications: 'edit_notifications',
+    Configuration: 'tune',
     Security: 'shields',
   }
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [AdminComponent],
-      imports: [RacsAdminModule, BrowserAnimationsModule],
-      providers: [{BreakpointObserver, useClass: BreakpointObserverStub}]
+      imports: [RacsAdminModule, BrowserAnimationsModule, HttpClientModule],
+      providers: [
+        {BreakpointObserver, useClass: BreakpointObserverStub},
+        HttpClient
+      ]
     }).compileComponents();
 
     fixture = await TestBed.createComponent(AdminComponent);

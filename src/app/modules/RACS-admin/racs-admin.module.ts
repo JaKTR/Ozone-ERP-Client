@@ -19,12 +19,14 @@ import {ReactiveFormsModule} from "@angular/forms";
 import {MatDividerModule} from "@angular/material/divider";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatSortModule} from "@angular/material/sort";
+import { MembershipTableComponent } from './membership-table/membership-table.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
     MembershipCRUDComponent,
-    MemberCreateDialogComponent
+    MemberCreateDialogComponent,
+    MembershipTableComponent
   ],
   imports: [
     CommonModule,
@@ -34,6 +36,7 @@ import {MatSortModule} from "@angular/material/sort";
     MatFormFieldModule,
     MatTooltipModule,
     MatTableModule,
+    MatSortModule,
     MatInputModule,
     MatCardModule,
     MatButtonModule,
@@ -41,8 +44,7 @@ import {MatSortModule} from "@angular/material/sort";
     MatGridListModule,
     ReactiveFormsModule,
     MatDividerModule,
-    MatSnackBarModule,
-    MatSortModule
+    MatSnackBarModule
   ],
   exports: [
     AdminComponent

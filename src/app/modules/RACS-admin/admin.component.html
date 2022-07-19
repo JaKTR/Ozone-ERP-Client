@@ -46,6 +46,20 @@
         [matTooltipDisabled]="(responsiveService.isWeb | async)!.matches"
         [matTooltipShowDelay]="0"
         matTooltip="Security"
+        matTooltipPosition="after">tune
+      </mat-icon>
+      <mat-label *ngIf="(responsiveService.isWeb | async)?.matches" class="tab-mat-label">Configuration</mat-label>
+    </ng-template>
+
+    Content 3
+  </mat-tab>
+
+  <mat-tab>
+    <ng-template mat-tab-label>
+      <mat-icon
+        [matTooltipDisabled]="(responsiveService.isWeb | async)!.matches"
+        [matTooltipShowDelay]="0"
+        matTooltip="Security"
         matTooltipPosition="after">shields
       </mat-icon>
       <mat-label *ngIf="(responsiveService.isWeb | async)?.matches" class="tab-mat-label">Security</mat-label>
