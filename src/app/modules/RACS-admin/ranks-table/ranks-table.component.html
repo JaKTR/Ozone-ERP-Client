@@ -1,0 +1,35 @@
+<mat-table [dataSource]="rankData">
+
+  <!--  Response name column(s)    -->
+  <ng-container matColumnDef="abbreviation">
+    <mat-header-cell *matHeaderCellDef>Abbreviation</mat-header-cell>
+    <mat-cell *matCellDef="let rank">{{rank.abbreviation}}</mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="qualification">
+    <mat-header-cell *matHeaderCellDef>Qualification</mat-header-cell>
+    <mat-cell *matCellDef="let rank"> {{rank.qualification}} </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="editAction">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let staff">
+      <button mat-icon-button>
+        <mat-icon>edit</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <ng-container matColumnDef="deleteAction">
+    <mat-header-cell *matHeaderCellDef></mat-header-cell>
+    <mat-cell *matCellDef="let booking">
+      <button mat-icon-button>
+        <mat-icon color="warn">delete</mat-icon>
+      </button>
+    </mat-cell>
+  </ng-container>
+
+  <mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></mat-header-row>
+  <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+  <ng-template matNoDataRow class="mat-row">No data matching the filter "{{filterInput ? filterInput.value : ''}}"</ng-template>
+</mat-table>

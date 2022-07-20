@@ -20,32 +20,38 @@ import {MatDividerModule} from "@angular/material/divider";
 import {MatSnackBarModule} from "@angular/material/snack-bar";
 import {MatSortModule} from "@angular/material/sort";
 import { MembershipTableComponent } from './membership-table/membership-table.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
+import {MatExpansionModule} from "@angular/material/expansion";
+import { RanksTableComponent } from './ranks-table/ranks-table.component';
 
 @NgModule({
   declarations: [
     AdminComponent,
     MembershipCRUDComponent,
     MemberCreateDialogComponent,
-    MembershipTableComponent
+    MembershipTableComponent,
+    ConfigurationComponent,
+    RanksTableComponent
   ],
-  imports: [
-    CommonModule,
-    RacsAdminRoutingModule,
-    MatTabsModule,
-    MatIconModule,
-    MatFormFieldModule,
-    MatTooltipModule,
-    MatTableModule,
-    MatSortModule,
-    MatInputModule,
-    MatCardModule,
-    MatButtonModule,
-    MatDialogModule,
-    MatGridListModule,
-    ReactiveFormsModule,
-    MatDividerModule,
-    MatSnackBarModule
-  ],
+    imports: [
+        CommonModule,
+        RacsAdminRoutingModule,
+        MatTabsModule,
+        MatIconModule,
+        MatFormFieldModule,
+        MatTooltipModule,
+        MatTableModule,
+        MatSortModule,
+        MatInputModule,
+        MatCardModule,
+        MatButtonModule,
+        MatDialogModule,
+        MatGridListModule,
+        ReactiveFormsModule,
+        MatDividerModule,
+        MatSnackBarModule,
+        MatExpansionModule
+    ],
   exports: [
     AdminComponent
   ]
